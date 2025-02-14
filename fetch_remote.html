@@ -16,12 +16,22 @@
     var columnDefs = [
       {headerName: "Make", field: "make"},
       {headerName: "Model", field: "model"},
-      {headerName: "Price", field: "price"}
-    ];
+      {headerName: "Price", field: "price",
+      valueFormatter: (params) => {
+        return "£" + params.value.toLocaleString();
+      }
+    }
+    ]
+    
 
     // let the grid know which columns to use
     var gridOptions = {
-      columnDefs: columnDefs
+      columnDefs: columnDefs,
+      defaultColDef: {
+    filter: true,
+    sortable:true,
+  },
+  pagination:true,
     };
 
   // lookup the container we want the Grid to use
